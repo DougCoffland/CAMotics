@@ -66,6 +66,7 @@ bool LineCommand::merge(const LineCommand &lc, const PlannerConfig &config,
   const double theta = unit.angleBetween(lc.unit);
   const double a = length;
   const double b = lc.length;
+LOG_INFO(1, "theta: " << theta << " unit: " << unit << " lc.unit: " << lc.unit);
 LOG_INFO(1,"\ntarget = " << target << " lc.target = " << lc.target);
 LOG_INFO(1,"a = " << a << " b = " << b << " theta = " << theta);
   // Don't merge lines that point in the opposite direction
