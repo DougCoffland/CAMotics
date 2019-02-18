@@ -375,8 +375,8 @@ bool LinePlanner::idLess(uint64_t a, uint64_t b) const {
 
 template <typename T>
 void LinePlanner::pushSetCommand(const string &name, const T &_value) {
-  SmartPointer<JSON::Value> value = JSON::Factory::create(_value);
 LOG_INFO(1, name << ": " << value);
+  SmartPointer<JSON::Value> value = JSON::Factory::create(_value);
   // Merge with previous command if possible
   for (PlannerCommand *cmd = cmds.back(); cmd; cmd = cmd->prev) {
     SetCommand *sc = dynamic_cast<SetCommand *>(cmd);
