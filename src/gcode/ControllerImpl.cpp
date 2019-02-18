@@ -338,7 +338,7 @@ void ControllerImpl::moveAxis(char axis, double value, bool rapid) {
 void ControllerImpl::arc(int vars, bool clockwise) {
   // TODO Affected by cutter radius compensation
   // TODO Make sure this is correct for planes XZ and YZ
-LOG_INFO("ControllerImpl::arc");
+LOG_INFO(1,"ControllerImpl::arc");
   const char *axes = getPlaneAxes();
   if (state.plane == XZ) clockwise = !clockwise;
 
