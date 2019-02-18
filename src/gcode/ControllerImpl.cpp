@@ -338,7 +338,7 @@ void ControllerImpl::moveAxis(char axis, double value, bool rapid) {
 void ControllerImpl::arc(int vars, bool clockwise) {
   // TODO Affected by cutter radius compensation
   // TODO Make sure this is correct for planes XZ and YZ
-LOG_INFO(1,"ControllerImpl::arc");
+LOG_INFO(1,"ControllerImpl::arc 1");
   const char *axes = getPlaneAxes();
   if (state.plane == XZ) clockwise = !clockwise;
 
@@ -381,6 +381,7 @@ LOG_INFO(1,"ControllerImpl::arc");
     warned = true;
 
   } else {
+LOG_INFO(1,"ControllerImpl::arc 2");
     // Get arc center
     const char *offsets = getPlaneOffsets();
     Vector2D offset;
@@ -404,7 +405,7 @@ LOG_INFO(1,"ControllerImpl::arc");
                 << "finish=" << finish << "offset=" << offset);
     }
   }
-
+LOG_INFO(1,"ControllerImpl::arc 3");
   // Compute angle
   double startAngle = (start - center).angleBetween(Vector2D(1, 0));
   double finishAngle = (finish - center).angleBetween(Vector2D(1, 0));
@@ -425,6 +426,7 @@ LOG_INFO(1,"ControllerImpl::arc");
   double deltaZ = target.get(axes[2]) - current.get(axes[2]);
   Vector2D offset(center - start);
   machine.arc(Vector3D(offset.x(), offset.y(), deltaZ), -angle, state.plane);
+LOG_INFO(1,"ControllerImpl::arc 4");
   move(target, vars, false);
 
   LOG_INFO(3, "Controller: Arc");
