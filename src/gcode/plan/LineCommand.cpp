@@ -66,7 +66,7 @@ bool LineCommand::merge(const LineCommand &lc, const PlannerConfig &config,
   const double theta = unit.angleBetween(lc.unit);
   const double a = length;
   const double b = lc.length;
-
+LOG_INFO(1,"\na = " << a << " b = " << b << " theta = " << theta);
   // Don't merge lines that point in the opposite direction
   if (isnan(theta) || 3.14 < theta) return false;
 
@@ -74,7 +74,7 @@ bool LineCommand::merge(const LineCommand &lc, const PlannerConfig &config,
     // Compute error if moves are merged
     const double c = sqrt(a * a + b * b - 2 * a * b * cos(theta));
     const double error = a * b * sin(theta) / c;
-LOG_INFO(1,"\nc = " << c << " error = " << error << " this->error = " << this->error << " maxMergeError = " << config.maxMergeError);
+LOG_INFO(1,"c = " << c << " error = " << error << " this->error = " << this->error << " maxMergeError = " << config.maxMergeError);
     if (config.maxMergeError < error + this->error) return false;
 LOG_INFO(1,"maxCollinearAngle = " << config.maxCollinearAngle << " theta = " << theta);
     if (config.maxCollinearAngle < theta) {
