@@ -76,7 +76,7 @@ bool LineCommand::merge(const LineCommand &lc, const PlannerConfig &config,
     const double error = a * b * sin(theta) / c;
 LOG_INFO(1,"\nc = " << c << " error = " << error << " this->error = " << this->error << " maxMergeError = " << config.maxMergeError);
     if (config.maxMergeError < error + this->error) return false;
-
+LOG_INFO(1,"maxCollinearAngle = " << config.maxCollinearAngle << " theta = " << theta);
     if (config.maxCollinearAngle < theta) {
       // Check if move is too long for merge
       if (config.maxMergeLength < lc.length || config.maxMergeLength < length)
