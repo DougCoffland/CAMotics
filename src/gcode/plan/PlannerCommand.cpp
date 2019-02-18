@@ -19,7 +19,6 @@
 \******************************************************************************/
 
 #include "PlannerCommand.h"
-#include <cbang/log/Logger.h>
 
 using namespace GCode;
 using namespace cb;
@@ -32,7 +31,7 @@ void PlannerCommand::read(const JSON::Value &value) {
 
 void PlannerCommand::write(JSON::Sink &sink) const {
   sink.beginDict();
-LOG_INFO(1,"TYPE: " << getType());
+
   sink.insert("type", getType());
   sink.insert("id", getID());
 

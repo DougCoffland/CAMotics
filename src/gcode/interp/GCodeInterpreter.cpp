@@ -66,6 +66,7 @@ void GCodeInterpreter::execute(const Code &code, int vars) {
   if (!controller.execute(code, vars)) LOG_WARNING("Not implemented: " << code);
   else if (code.group == MG_MOTION)
     controller.setCurrentMotionMode(code.number);
+LOG_INFO(1, code << " " << code.number);
 }
 
 
