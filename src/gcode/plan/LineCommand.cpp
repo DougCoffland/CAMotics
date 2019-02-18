@@ -74,7 +74,7 @@ bool LineCommand::merge(const LineCommand &lc, const PlannerConfig &config,
     // Compute error if moves are merged
     const double c = sqrt(a * a + b * b - 2 * a * b * cos(theta));
     const double error = a * b * sin(theta) / c;
-
+LOG_INFO(1,"\nc = " << c << " error = " << error);
     if (config.maxMergeError < error + this->error) return false;
 
     if (config.maxCollinearAngle < theta) {
