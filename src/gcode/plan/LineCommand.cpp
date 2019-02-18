@@ -67,7 +67,6 @@ bool LineCommand::merge(const LineCommand &lc, const PlannerConfig &config,
   const double a = length;
   const double b = lc.length;
 
-LOG_INFO(1,"theta = " << theta);
   // Don't merge lines that point in the opposite direction
   if (isnan(theta) || 3.14 < theta) return false;
 
@@ -91,6 +90,9 @@ LOG_INFO(1,"theta = " << theta);
     this->error += error;
   }
 
+  LOG_INFO(1, "Merging moves length=" << a << " + " << b
+            << " target=" << target << " -> " << lc.target
+            << " start=" << start << " theta=" << theta);
   LOG_DEBUG(3, "Merging moves length=" << a << " + " << b
             << " target=" << target << " -> " << lc.target
             << " start=" << start << " theta=" << theta);
