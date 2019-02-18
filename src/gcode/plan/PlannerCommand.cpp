@@ -19,6 +19,7 @@
 \******************************************************************************/
 
 #include "PlannerCommand.h"
+#include <cbang/log/Logger.h>
 
 using namespace GCode;
 using namespace cb;
