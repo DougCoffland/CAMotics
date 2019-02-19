@@ -423,7 +423,7 @@ void ControllerImpl::arc(int vars, bool clockwise) {
   double deltaZ = target.get(axes[2]) - current.get(axes[2]);
   Vector2D offset(center - start);
   machine.arc(Vector3D(offset.x(), offset.y(), deltaZ), -angle, state.plane);
-LOG_INFO(1,"ControllerImpl::arc" << " G" << getVar('G') << " X" << getVar('X'));
+
   move(target, vars, false);
 
   LOG_INFO(3, "Controller: Arc");
