@@ -58,6 +58,7 @@ double LineCommand::getTime() const {
 
 bool LineCommand::merge(const LineCommand &lc, const PlannerConfig &config,
                         double speed) {
+LOG_INFO(1,"LineCommand::merge - MERGING...target = " << target);
   // Check if moves are compatible
   if (lc.rapid != rapid || lc.seeking != seeking || lc.first != first)
     return false;
