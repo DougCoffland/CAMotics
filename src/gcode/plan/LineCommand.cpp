@@ -66,7 +66,8 @@ bool LineCommand::merge(const LineCommand &lc, const PlannerConfig &config,
   const double theta = unit.angleBetween(lc.unit);
   const double a = length;
   const double b = lc.length;
-LOG_INFO(1,"\nLineCommand::merge - MERGING...target = " << target << " theta = " << theta);
+LOG_INFO(1,"\nLineCommand::merge - MERGING...target = " << start << " theta = " << theta);
+LOG_INFO(1,"LineCommand::merge - MERGING...target = " << target << " theta = " << theta);
 LOG_INFO(1,"LineCommand::merge - MERGING...unit = " << unit);
 LOG_INFO(1,"LineCommand::merge - MERGING...lc.unit = " << lc.unit);
 
