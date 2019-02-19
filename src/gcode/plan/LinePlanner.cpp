@@ -249,7 +249,6 @@ void LinePlanner::dwell(double seconds) {
 
 void LinePlanner::move(const Axes &target, int axes, bool rapid) {
   Axes start = getPosition();
-LOG_INFO(1,"LinePlanner::move - MOVING pos: " << target << " axes: " << axes);
 
   LOG_DEBUG(3, "move(" << target << ", " << (rapid ? "true" : "false")
             << ") from " << start);
@@ -276,6 +275,7 @@ LOG_INFO(1,"LinePlanner::move - MOVING pos: " << target << " axes: " << axes);
     if (speed && !isnan(speed)) pushSetCommand("speed", speed);
     rapidAutoOff = false;
   }
+LOG_INFO(1,"LinePlanner::move - MOVING pos: " << target << " axes: " << axes);
 
   // Create line command
   LineCommand *lc = new LineCommand(getNextID(), start, target, feed, rapid,
@@ -439,6 +439,8 @@ void LinePlanner::plan(PlannerCommand *cmd) {
 bool LinePlanner::planOne(PlannerCommand *cmd) {
   LOG_DEBUG(3, "Planning " << cmd->getID());
   LOG_DEBUG(4, "Planning " << cmd->toString());
+LOG_INFO(1, "LinePlanner::planOne - Planning " << cmd->getID());
+LOG_INFO(1, "LinePlanner::planOne - Planning " << cmd->toString());
 
   // Set entry velocity when at begining
   bool backplan = false;

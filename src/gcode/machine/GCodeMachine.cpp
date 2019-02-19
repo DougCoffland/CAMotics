@@ -201,7 +201,6 @@ bool is_near(double x, double y) {
 
 
 void GCodeMachine::move(const Axes &nextPosition, int axes, bool rapid) {
-LOG_INFO(1,"GCodeMachine::move nextPosition = " << nextPosition);
   bool first = true;
   bool imperial = units == Units::IMPERIAL;
   Axes lastPosition = getPosition();
