@@ -66,6 +66,9 @@ bool LineCommand::merge(const LineCommand &lc, const PlannerConfig &config,
   const double theta = unit.angleBetween(lc.unit);
   const double a = length;
   const double b = lc.length;
+LOG_INFO(1, "\nlast unit: " << lc.unit);
+LOG_INFO(1, "this unit: "<< unit);
+LOG_INFO(1, "last length = " << b << " this length = " << a);
 LOG_INFO(1, "LineCommand::merge theta = " << theta << " target: " << target);
   // Don't merge lines that point in the opposite direction
   if (isnan(theta) || 3.14 < theta) return false;
