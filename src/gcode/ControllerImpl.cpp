@@ -318,6 +318,7 @@ bool ControllerImpl::isPositionChanging(int vars, bool incremental) const {
 
 
 void ControllerImpl::move(const Axes &pos, int axes, bool rapid) {
+LOG_INFO(1,"MOVING");
   machine.move(pos, axes, rapid);
   setAbsolutePosition(pos, getUnits());
 }
@@ -338,6 +339,7 @@ void ControllerImpl::moveAxis(char axis, double value, bool rapid) {
 void ControllerImpl::arc(int vars, bool clockwise) {
   // TODO Affected by cutter radius compensation
   // TODO Make sure this is correct for planes XZ and YZ
+LOG_INFO(1,"\nSTARTING ARC")
   const char *axes = getPlaneAxes();
   if (state.plane == XZ) clockwise = !clockwise;
 
@@ -425,7 +427,7 @@ void ControllerImpl::arc(int vars, bool clockwise) {
   machine.arc(Vector3D(offset.x(), offset.y(), deltaZ), -angle, state.plane);
 
   move(target, vars, false);
-
+LOG_INFO(1,"ENDING ARC\n")
   LOG_INFO(3, "Controller: Arc");
 }
 
