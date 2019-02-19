@@ -318,7 +318,7 @@ bool ControllerImpl::isPositionChanging(int vars, bool incremental) const {
 
 
 void ControllerImpl::move(const Axes &pos, int axes, bool rapid) {
-LOG_INFO(1,"MOVING pos: " << pos << " axes: " << axes);
+LOG_INFO(1,"ControllerImpl:: move - MOVING pos: " << pos << " axes: " << axes);
   machine.move(pos, axes, rapid);
   setAbsolutePosition(pos, getUnits());
 }
